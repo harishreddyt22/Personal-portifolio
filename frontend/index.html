@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harish Reddy — AI/ML &amp; GenAI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ambient canvas backdrop -->
+<canvas id="net-canvas"></canvas>
+
+<!-- progress bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAV -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="logo">HR<span class="logo-dot">.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">about</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#certifications">certs</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="hero">
+  <div class="hero-inner">
+    <p class="eyebrow reveal">// hello_world.py</p>
+    <h1 class="hero-name reveal">Harish Reddy</h1>
+    <div class="hero-role reveal">
+      <span class="terminal-prompt">$</span>
+      <span id="typedRole" class="typed-role"></span><span class="cursor">▌</span>
+    </div>
+    <p class="hero-desc reveal">
+      Software Engineer at Andor Tech, building toward a career centered on
+      <strong>Artificial Intelligence, Machine Learning &amp; Generative AI research</strong>.
+      I turn papers and prototypes into pipelines that ship — from CNNs classifying
+      cancer on CT scans to RAG systems reasoning over unstructured data.
+    </p>
+    <div class="hero-actions reveal">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+    <div class="hero-socials reveal" id="heroSocials"></div>
+  </div>
+  <div class="scroll-hint reveal">
+    <span>scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <p class="section-tag reveal">01 — about</p>
+    <div class="about-grid">
+      <h2 class="section-title reveal">Training on real problems,<br>optimizing for impact.</h2>
+      <div class="about-body reveal">
+        <p>
+          I'm a Python developer turned ML/GenAI-focused engineer, currently full-time at
+          <strong>Andor Tech</strong> in Bengaluru. My work spans distributed data engineering
+          with PySpark, LLM agent systems, and retrieval-augmented generation — with the
+          long-term goal of moving deeper into applied AI/ML and GenAI research.
+        </p>
+        <p>
+          Outside of work, I build end-to-end ML systems from scratch: supply-chain risk
+          predictors, urban heat models trained on satellite imagery, and CNNs for medical
+          imaging — usually because I want to understand a technique badly enough to
+          re-derive it in code.
+        </p>
+        <a href="/api/resume" class="btn btn-primary resume-inline">↓ Download Résumé (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <p class="section-tag reveal">02 — experience</p>
+    <h2 class="section-title reveal">git log --author="Harish"</h2>
+    <div class="timeline" id="timeline"></div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <p class="section-tag reveal">03 — projects</p>
+    <h2 class="section-title reveal">Things I've shipped &amp; studied</h2>
+    <div class="project-grid" id="projectGrid"></div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <p class="section-tag reveal">04 — stack</p>
+    <h2 class="section-title reveal">import toolkit</h2>
+    <div class="skills-spotlight reveal" id="skillsSpotlight"></div>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="section" id="certifications">
+    <p class="section-tag reveal">05 — certifications</p>
+    <h2 class="section-title reveal">Verified learning</h2>
+    <p class="section-hint reveal">Click a card to open the certificate. Drop files into <code>static/certificates</code> on the server to make them viewable here — see <code>static/certificates/README.md</code>.</p>
+    <div class="cert-grid" id="certGrid"></div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section" id="education">
+    <p class="section-tag reveal">06 — education</p>
+    <h2 class="section-title reveal">Foundations</h2>
+    <div class="edu-list" id="eduList"></div>
+  </section>
+
+</main>
+
+<!-- CONTACT / FOOTER -->
+<footer class="footer" id="contact">
+  <div class="footer-inner">
+    <p class="section-tag reveal">07 — contact</p>
+    <div class="contact-grid">
+      <div class="contact-intro reveal">
+        <h2 class="footer-title">Let's build something<br>that learns.</h2>
+        <p class="contact-desc">Have a role, a project, or just a question about one of the builds above? Leave your details and I'll get back to you.</p>
+        <div class="footer-contact">
+          <a href="mailto:tharishreddy9876@gmail.com" class="footer-email">tharishreddy9876@gmail.com</a>
+          <span class="footer-phone">+91 6305155506 · Bengaluru, India</span>
+        </div>
+        <div class="hero-socials" id="footerSocials"></div>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm">
+        <label class="form-field">
+          <span>Name</span>
+          <input type="text" name="name" id="cf-name" placeholder="Your name" required>
+        </label>
+        <label class="form-field">
+          <span>Email</span>
+          <input type="email" name="email" id="cf-email" placeholder="you@example.com" required>
+        </label>
+        <label class="form-field">
+          <span>Message</span>
+          <textarea name="message" id="cf-message" rows="4" placeholder="What would you like to talk about?" required></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary" id="cf-submit">Send Message</button>
+        <p class="form-status" id="cf-status"></p>
+      </form>
+    </div>
+    <p class="footer-note reveal">FastAPI backend + vanilla HTML/CSS/JS frontend — no heavy framework, no fuss.</p>
+  </div>
+</footer>
+
+<!-- CERT MODAL -->
+<div class="modal-overlay" id="certModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
