@@ -10,10 +10,10 @@ it over the API — so you only ever edit content in ONE place.
 # ---- SOCIAL / PROFILE LINKS ------------------------------------------------
 # TODO: replace with your real profile URLs.
 SOCIALS = [
-    {"label": "GitHub", "icon": "github", "url": "https://github.com/YOUR_USERNAME"},
-    {"label": "Kaggle", "icon": "kaggle", "url": "https://www.kaggle.com/YOUR_USERNAME"},
+    {"label": "GitHub", "icon": "github", "url": "https://github.com/harishreddyt22"},
+    {"label": "Kaggle", "icon": "kaggle", "url": "https://www.kaggle.com/tharishreddy22"},
     {"label": "Google Developer Profile", "icon": "google", "url": "https://g.dev/YOUR_USERNAME"},
-    {"label": "LinkedIn", "icon": "linkedin", "url": "https://linkedin.com/in/YOUR_USERNAME"},
+    {"label": "LinkedIn", "icon": "linkedin", "url": "https://www.linkedin.com/in/harish-reddy-aaa0b2260/"},
 ]
 
 # ---- HERO TYPED ROLES -------------------------------------------------------
