@@ -40,7 +40,6 @@ function renderExperience(experience) {
     <div class="commit ${job.current ? 'current' : ''} reveal">
       <div class="commit-dot"></div>
       <div class="commit-head">
-        <span class="commit-hash">#${job.hash}</span>
         <span class="commit-role">${job.role}</span>
         ${job.current ? '<span class="commit-badge">current</span>' : ''}
       </div>
@@ -67,7 +66,12 @@ function renderProjects(projects) {
 
 function renderSkills(skills) {
   const skillsGrid = document.getElementById('skillsGrid');
-  skillsGrid.innerHTML = skills.map(g => `
+  const validGroups = (skills || [])
+    .filter(g => g && Array.isArray(g.items))
+    .map(g => ({ ...g, items: (g.items || []).filter(i => String(i).trim()) }))
+    .filter(g => g.group && g.items.length > 0);
+
+  skillsGrid.innerHTML = validGroups.map(g => `
     <div class="skill-group reveal">
       <h3>${g.group}</h3>
       <div class="skill-tags">${g.items.map(i => `<span class="skill-tag">${i}</span>`).join('')}</div>

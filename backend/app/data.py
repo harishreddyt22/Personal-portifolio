@@ -18,16 +18,16 @@ SOCIALS = [
 
 # ---- HERO TYPED ROLES -------------------------------------------------------
 TYPED_ROLES = [
-    "Software Engineer @ Andor Tech",
-    "AI / ML Engineer",
-    "GenAI & LLM Systems",
-    "Aspiring AI/ML Researcher",
+    "Software Engineer at Andor Tech",
+    "AI & ML Tech focused",
+    "GenAI & ML Researcher",
+    "Agentic AI Systems Builder",
 ]
 
 # ---- EXPERIENCE (newest first) ---------------------------------------------
 EXPERIENCE = [
     {
-        "hash": "a1b2c3d",
+
         "role": "Software Engineer (Full-time)",
         "company": "Andor Tech",
         "location": "Bengaluru, India",
@@ -42,8 +42,8 @@ EXPERIENCE = [
         "skills": ["Python", "LLM Agents", "RAG", "System Design", "Evaluation"],
     },
     {
-        "hash": "7e4f9ab",
-        "role": "Python Developer (Intern)",
+    
+        "role": "Trainee Data Engineer (Intern)",
         "company": "Andor Tech",
         "location": "Bengaluru, India",
         "date": "Dec 2025 — May 2026",
@@ -58,7 +58,7 @@ EXPERIENCE = [
         "skills": ["LLMs", "RAG", "AI Agents", "VLMs", "OCR", "Vector DBs"],
     },
     {
-        "hash": "3c8d21f",
+    
         "role": "Trainee Data Engineer",
         "company": "Andor Tech",
         "location": "Bengaluru, India",
@@ -74,7 +74,7 @@ EXPERIENCE = [
         "skills": ["PySpark", "Pandas", "ETL", "Spark MLlib", "MySQL/Postgres"],
     },
     {
-        "hash": "0f56aa2",
+
         "role": "Student Research Intern",
         "company": "MURTI Research Center",
         "location": "Bengaluru, India",
@@ -138,19 +138,19 @@ SKILLS = [
 EDUCATION = [
     {
         "school": "Gandhi Institute Of Technology And Management",
-        "degree": "B.Tech, CSE (AI & ML) · CGPA 7.35",
-        "date": "Aug 2022 — Present",
+        "degree": "B.Tech, CSE (AI & ML)",
+        "date": "Aug 2022 — April 2026",
         "location": "Bengaluru",
     },
     {
         "school": "Mother Teresa Junior College",
-        "degree": "Board of Intermediate Education · 71.1%",
+        "degree": "Board of Intermediate Education",
         "date": "Jun 2020 — May 2022",
         "location": "Palamaner",
     },
     {
         "school": "Vijaya Vani (EM) High School",
-        "degree": "Board of Secondary Education · 80.16%",
+        "degree": "Board of Secondary Education",
         "date": "Jun 2019 — Mar 2020",
         "location": "Chowdepalli",
     },

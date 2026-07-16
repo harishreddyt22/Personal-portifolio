@@ -152,10 +152,11 @@ code{font-family:var(--font-mono); background:var(--bg-elev-2); padding:.15em .4
    SECTIONS (shared)
    ========================================================================== */
 main{ position:relative; z-index:2; }
-.section{ max-width:1180px; margin:0 auto; padding:120px 28px; }
-.section-tag{ font-family:var(--font-mono); color:var(--teal); font-size:.8rem; margin-bottom:14px; }
-.section-title{ font-size:clamp(1.9rem,4vw,2.8rem); font-weight:600; margin-bottom:48px; max-width:800px; }
-.section-hint{ font-family:var(--font-body); color:var(--text-dim); font-size:.92rem; margin-top:-28px; margin-bottom:40px; max-width:640px; }
+.section{ max-width:1180px; margin:0 auto; padding:10px 28px 12px; }
+.section + .section{ padding-top:8px; margin-top:6px; }
+.section-tag{ font-family:var(--font-mono); color:var(--teal); font-size:.8rem; margin:0 0 4px; }
+.section-title{ font-size:clamp(1.9rem,4vw,2.8rem); font-weight:600; margin:0 0 8px; max-width:800px; }
+.section-hint{ font-family:var(--font-body); color:var(--text-dim); font-size:.92rem; margin:0 0 8px; max-width:640px; }
 
 /* reveal-on-scroll */
 .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
@@ -164,49 +165,49 @@ main{ position:relative; z-index:2; }
 /* ==========================================================================
    ABOUT
    ========================================================================== */
-.about-grid{ display:grid; grid-template-columns:1fr 1.15fr; gap:60px; }
-.about-body p{ color:var(--text-dim); margin-bottom:20px; }
+.about-grid{ display:grid; grid-template-columns:1fr 1.15fr; gap:24px; }
+.about-body p{ color:var(--text-dim); margin-bottom:8px; }
 .about-body strong{ color:var(--text); }
-.resume-inline{ margin-top:14px; }
+.resume-inline{ margin-top:8px; }
 
 /* ==========================================================================
    EXPERIENCE — git log timeline
    ========================================================================== */
-.timeline{ position:relative; padding-left:34px; }
+.timeline{ position:relative; padding-left:34px; display:flex; flex-direction:column; gap:4px; }
 .timeline::before{
-  content:''; position:absolute; left:6px; top:6px; bottom:6px; width:1px;
+  content:''; position:absolute; left:6px; top:0; bottom:0; width:1px;
   background:linear-gradient(var(--teal-dim), var(--line));
 }
-.commit{ position:relative; padding-bottom:52px; }
+.commit{ position:relative; padding-bottom:0; margin-bottom:0; }
 .commit:last-child{ padding-bottom:0; }
 .commit-dot{
   position:absolute; left:-34px; top:4px; width:13px; height:13px; border-radius:50%;
   background:var(--bg); border:2px solid var(--text-mute);
 }
 .commit.current .commit-dot{ border-color:var(--teal); box-shadow:0 0 0 4px rgba(45,217,195,.15); }
-.commit-head{ display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:6px; }
+.commit-head{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:2px; }
 .commit-hash{ font-family:var(--font-mono); font-size:.78rem; color:var(--gold); }
 .commit-role{ font-size:1.2rem; font-weight:600; font-family:var(--font-display); }
 .commit-badge{
   font-family:var(--font-mono); font-size:.65rem; text-transform:uppercase; letter-spacing:.08em;
   background:rgba(45,217,195,.14); color:var(--teal); padding:3px 8px; border-radius:5px;
 }
-.commit-meta{ font-family:var(--font-mono); font-size:.8rem; color:var(--text-mute); margin-bottom:14px; }
+.commit-meta{ font-family:var(--font-mono); font-size:.8rem; color:var(--text-mute); margin-bottom:4px; }
 .commit-meta .dot{ color:var(--text-mute); margin:0 6px; }
-.commit-bullets{ list-style:none; margin:0 0 16px; padding:0; color:var(--text-dim); font-size:.94rem; max-width:680px; }
-.commit-bullets li{ position:relative; padding-left:20px; margin-bottom:8px; }
+.commit-bullets{ list-style:none; margin:0 0 4px; padding:0; color:var(--text-dim); font-size:.94rem; max-width:680px; }
+.commit-bullets li{ position:relative; padding-left:16px; margin-bottom:4px; }
 .commit-bullets li::before{ content:'▸'; position:absolute; left:0; color:var(--teal-dim); }
-.commit-skills{ display:flex; gap:8px; flex-wrap:wrap; }
+.commit-skills{ display:flex; gap:6px; flex-wrap:wrap; margin-top:0; }
 .chip{ font-family:var(--font-mono); font-size:.72rem; color:var(--text-dim); border:1px solid var(--line); padding:4px 10px; border-radius:6px; }
 
 /* ==========================================================================
    PROJECTS
    ========================================================================== */
-.project-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px; }
+.project-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:14px; }
 .project-card{
   background:var(--bg-elev); border:1px solid var(--line); border-radius:var(--radius);
-  padding:30px; transition:transform .3s var(--ease), border-color .3s;
-  display:flex; flex-direction:column; gap:16px;
+  padding:24px; transition:transform .3s var(--ease), border-color .3s;
+  display:flex; flex-direction:column; gap:10px;
 }
 .project-card:hover{ transform:translateY(-6px); border-color:var(--teal-dim); }
 .project-card h3{ font-size:1.25rem; font-weight:600; }
@@ -217,17 +218,8 @@ main{ position:relative; z-index:2; }
 .project-tags{ display:flex; gap:8px; flex-wrap:wrap; }
 
 /* ==========================================================================
-   SKILLS — spotlight strip + masonry-packed groups
+   SKILLS — masonry-packed groups
    ========================================================================== */
-.skills-spotlight{
-  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
-  margin-bottom:40px; padding:20px 24px; border-radius:var(--radius);
-  background:linear-gradient(120deg, rgba(45,217,195,.10), rgba(167,139,250,.08));
-  border:1px solid var(--teal-dim);
-}
-.spotlight-label{ font-family:var(--font-mono); font-size:.75rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:.08em; }
-.spotlight-value{ font-family:var(--font-display); font-size:1.4rem; font-weight:700; background:var(--gradient-main); -webkit-background-clip:text; background-clip:text; color:transparent; }
-
 .skills-grid{ column-count:3; column-gap:28px; }
 @media (max-width:900px){ .skills-grid{ column-count:2; } }
 @media (max-width:600px){ .skills-grid{ column-count:1; } }
@@ -248,10 +240,10 @@ main{ position:relative; z-index:2; }
 /* ==========================================================================
    CERTIFICATIONS
    ========================================================================== */
-.cert-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; }
+.cert-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; }
 .cert-card{
   background:var(--bg-elev); border:1px solid var(--line); border-radius:var(--radius);
-  padding:26px; cursor:pointer; transition:all .3s var(--ease); position:relative; overflow:hidden;
+  padding:20px; cursor:pointer; transition:all .3s var(--ease); position:relative; overflow:hidden;
 }
 .cert-card::before{
   content:'PDF'; position:absolute; top:0; right:0; font-family:var(--font-mono); font-size:.65rem;
@@ -269,7 +261,7 @@ main{ position:relative; z-index:2; }
 .edu-list{ display:flex; flex-direction:column; gap:0; }
 .edu-item{
   display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;
-  padding:22px 0; border-bottom:1px solid var(--line);
+  padding:12px 0; border-bottom:1px solid var(--line);
 }
 .edu-item:first-child{ border-top:1px solid var(--line); }
 .edu-main h3{ font-size:1.05rem; font-weight:600; margin-bottom:4px; }
@@ -279,8 +271,8 @@ main{ position:relative; z-index:2; }
 /* ==========================================================================
    FOOTER / CONTACT
    ========================================================================== */
-.footer{ position:relative; z-index:2; border-top:1px solid var(--line); margin-top:40px; }
-.footer-inner{ max-width:1100px; margin:0 auto; padding:120px 28px 60px; }
+.footer{ position:relative; z-index:2; border-top:0 !important; border-top-width:0 !important; border-top-style:none !important; margin-top:0; }
+.footer-inner{ max-width:1100px; margin:0 auto; padding:24px 28px 40px; }
 .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
 .footer-title{ font-size:clamp(2rem,5vw,3rem); font-weight:600; margin-bottom:18px; }
 .contact-desc{ color:var(--text-dim); font-size:1rem; max-width:440px; margin-bottom:28px; }
