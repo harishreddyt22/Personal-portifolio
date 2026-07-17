@@ -1,8 +1,10 @@
-# emailjs for email requests in contact forum 
-# in right main add insted of harish add the "hola like that in way"
-# add road map theme to education details or the experience like curved theme of roadmap as in that experinces 
-aswhen comes to certifications add line in middle where left and right certifications
-# for 1 step to next step there is lot of distance reduce that
-# near contact forum add some Enter your queries we will get back to you with in 24 hours 
-# in middle there is a scroll text remove insted
-# modify email to tandaruharishreddy@gmail.com 
+Required changes
+
+
+
+near certifications extra text is printing
+Starting should be capital letter for every sub-section 
+In intern experience months mismatch like insted of june there it is of may 
+need to change the resume
+In mobile view the the resume scrolling is not working
+in experience positions highlight with the square braces
