@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from ..data import EDUCATION, EXPERIENCE, PROJECTS, SKILLS, SOCIALS, TYPED_ROLES
+from ..data import EDUCATION, EMAILJS_CONFIG, EXPERIENCE, PROJECTS, SKILLS, SOCIALS, TYPED_ROLES
 
 router = APIRouter(tags=["profile"])
 
@@ -15,4 +15,5 @@ def get_profile():
         "projects": PROJECTS,
         "skills": SKILLS,
         "education": EDUCATION,
+        "emailjs": EMAILJS_CONFIG,
     }

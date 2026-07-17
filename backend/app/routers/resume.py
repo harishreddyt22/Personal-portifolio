@@ -11,8 +11,8 @@ RESUME_FILENAME = "Harish_Reddy_Resume.pdf"
 
 
 @router.get("/resume")
-def download_resume():
-    """Serve the résumé PDF as a downloadable file."""
+def view_resume():
+    """Serve the résumé PDF inline so it can be previewed in the browser/iframe."""
     file_path = RESUME_DIR / RESUME_FILENAME
     if not file_path.is_file():
         raise HTTPException(status_code=404, detail="Resume file not found on server")
@@ -20,4 +20,19 @@ def download_resume():
         file_path,
         media_type="application/pdf",
         filename=RESUME_FILENAME,
+        content_disposition_type="inline",
+    )
+
+
+@router.get("/resume/download")
+def download_resume():
+    """Serve the résumé PDF as a forced download."""
+    file_path = RESUME_DIR / RESUME_FILENAME
+    if not file_path.is_file():
+        raise HTTPException(status_code=404, detail="Resume file not found on server")
+    return FileResponse(
+        file_path,
+        media_type="application/pdf",
+        filename=RESUME_FILENAME,
+        content_disposition_type="attachment",
     )
