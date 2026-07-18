@@ -15,7 +15,6 @@ const ICONS = {
   kaggle: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 20.9h-3.3l-5.4-6.9-1.5 1.4v5.5H6.1V3h2.6v10l6.4-6.6h3.2l-6 6.1 6.6 8.4Z"/></svg>`,
   google: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.1 12.2c0-.7-.06-1.4-.19-2.1H12v4h5.66c-.24 1.3-1 2.4-2.1 3.15v2.6h3.4c2-1.85 3.14-4.55 3.14-7.65Z"/><path d="M12 22c2.85 0 5.24-.94 6.98-2.55l-3.4-2.6c-.94.63-2.15 1-3.58 1-2.75 0-5.08-1.86-5.9-4.35H2.6v2.7A10 10 0 0 0 12 22Z"/><path d="M6.1 13.5a5.99 5.99 0 0 1 0-3.9V6.9H2.6a10 10 0 0 0 0 8.3l3.5-1.7Z"/><path d="M12 5.9c1.55 0 2.94.53 4.04 1.58l3.02-3C17.24 2.6 14.85 1.7 12 1.7a10 10 0 0 0-9.4 5.2l3.5 2.7c.82-2.49 3.15-4.35 5.9-3.7Z"/></svg>`,
   linkedin: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>`,
-  credly: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 3 6v6c0 5.25 3.44 9.77 9 10 5.56-.23 9-4.75 9-10V6l-9-4Zm-1.1 7.7 1.5 1.5 3.6-3.6 1.4 1.4-5 5-3.1-3.1 1.4-1.4 1.7 1.7Z"/></svg>`,
 };
 
 /* ==========================================================================
@@ -77,12 +76,59 @@ function hideContactSuccessModal() {
   unlockBodyScroll();
 }
 
+function setFieldError(fieldId, message) {
+  const field = document.getElementById(`${fieldId}-field`);
+  const errorEl = document.getElementById(`${fieldId}-error`);
+  if (field) field.classList.toggle('invalid', Boolean(message));
+  if (errorEl) errorEl.textContent = message || '';
+}
+
+function validateContactForm() {
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const message = document.getElementById('cf-message').value.trim();
+
+  let isValid = true;
+
+  if (!name) {
+    setFieldError('cf-name', 'This field is mandatory');
+    isValid = false;
+  } else {
+    setFieldError('cf-name', '');
+  }
+
+  if (!email) {
+    setFieldError('cf-email', 'This field is mandatory');
+    isValid = false;
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    setFieldError('cf-email', 'Enter a valid email address');
+    isValid = false;
+  } else {
+    setFieldError('cf-email', '');
+  }
+
+  if (!message) {
+    setFieldError('cf-message', 'This field is mandatory');
+    isValid = false;
+  } else {
+    setFieldError('cf-message', '');
+  }
+
+  return { isValid, name, email, message };
+}
+
 function attachContactFormHandler(emailjsConfig) {
   const form = document.getElementById('contactForm');
   const submitBtn = document.getElementById('cf-submit');
   const closeBtn = document.getElementById('contactSuccessClose');
   const successModal = document.getElementById('contactSuccessModal');
   if (!form || !submitBtn) return;
+
+  // Clear a field's error as soon as the person starts fixing it.
+  ['cf-name', 'cf-email', 'cf-message'].forEach((id) => {
+    const input = document.getElementById(id);
+    if (input) input.addEventListener('input', () => setFieldError(id, ''));
+  });
 
   if (closeBtn) closeBtn.addEventListener('click', hideContactSuccessModal);
   if (successModal) successModal.addEventListener('click', (event) => {
@@ -98,12 +144,10 @@ function attachContactFormHandler(emailjsConfig) {
     event.preventDefault();
     event.stopImmediatePropagation();
 
-    const name = document.getElementById('cf-name').value.trim();
-    const email = document.getElementById('cf-email').value.trim();
-    const message = document.getElementById('cf-message').value.trim();
+    const { isValid, name, email, message } = validateContactForm();
 
-    if (!name || !email || !message) {
-      setFormStatus('Please fill in all fields.', 'error');
+    if (!isValid) {
+      setFormStatus('Please fill in all mandatory fields.', 'error');
       return;
     }
 
@@ -148,6 +192,7 @@ function attachContactFormHandler(emailjsConfig) {
         btn.textContent = 'Send Message';
         setFormStatus('Message sent successfully. Harish Reddy will get back to you within 24 hours.', 'success');
         form.reset();
+        ['cf-name', 'cf-email', 'cf-message'].forEach((id) => setFieldError(id, ''));
         showContactSuccessModal();
       }, (err) => {
         btn.textContent = 'Send Message';
@@ -347,16 +392,16 @@ function openResumeModal() {
   if (resumeIframe && !resumeIframe.src) {
     resumeIframe.src = resumeIframe.dataset.src;
   }
+  lockBodyScroll();
   resumeModal.classList.add('open');
   resumeModal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
 }
 
 function closeResumeModal() {
   if (!resumeModal) return;
   resumeModal.classList.remove('open');
   resumeModal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
+  unlockBodyScroll();
 }
 
 if (resumeOpenBtn) resumeOpenBtn.addEventListener('click', openResumeModal);

@@ -55,7 +55,7 @@ EXPERIENCE = [
         "role": "Trainee Data Engineer (Intern)",
         "company": "Andor Tech",
         "location": "Bengaluru, India",
-        "date": "Dec 2025 — May 2026",
+        "date": "Dec 2025 — June 2026",
         "current": False,
         "bullets": [
             "Developed AI-driven systems using LLMs with agent-based architectures to automate complex workflows and decision-making tasks.",
@@ -68,7 +68,7 @@ EXPERIENCE = [
     },
     {
     
-        "role": "Trainee Data Engineer",
+        "role": "Trainee Data Engineer (Intern)",
         "company": "Andor Tech",
         "location": "Bengaluru, India",
         "date": "May 2025 — Oct 2025",
@@ -84,7 +84,7 @@ EXPERIENCE = [
     },
     {
 
-        "role": "Student Research Intern",
+        "role": "Student Research (Intern)",
         "company": "MURTI Research Center",
         "location": "Bengaluru, India",
         "date": "Jan 2025 — Mar 2025",
